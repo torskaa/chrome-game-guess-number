@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess the Number Game</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      width: 300px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: #262627;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      padding: 20px;
+    }
+    h1 {
+      color: #ffffff;
+      text-align: center;
+      margin: 0 0 20px 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      font-weight: 600;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    #message {
+      padding: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: bold;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+    #guessInput {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-bottom: 10px;
+      color: #ffffff;
+      background-color: #0A0B0A;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    button:hover {
+      background-color: #1a1b1a;
+    }
+    #attemptCount, #score, #highScore {
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+      padding: 5px 10px;
+    }
+    #difficultySelect {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      font-size: 16px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: #262627;
+      color: #ffffff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+      background-repeat: no-repeat;
+      background-position-x: 95%;
+      background-position-y: 50%;
+      font-family: 'IBM Plex Sans', sans-serif;
+      border-radius: 10px;
+    }
+    .hint {
+      padding: 10px;
+      margin-top: 10px;
+      text-align: center;
+      font-style: italic;
+    }
+    .icon-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-text i {
+      margin-right: 10px;
+    }
+    p {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-dice"></i> Guess the Number</h1>
+    <select id="difficultySelect">
+      <option value="easy">Easy (1-50)</option>
+      <option value="medium" selected>Medium (1-100)</option>
+      <option value="hard">Hard (1-200)</option>
+    </select>
+    <p style="text-align: center;">Try to guess the number!</p>
+    <div id="message"></div>
+    <input type="text" id="guessInput" class="glassmorphism" placeholder="Enter your guess...">
+    <button id="submitGuess" class="glassmorphism"><i class="fas fa-check"></i> Submit Guess</button>
+    <button id="newGame" class="glassmorphism"><i class="fas fa-redo"></i> New Game</button>
+    <div id="attemptCount" class="icon-text"><i class="fas fa-redo-alt"></i> <span></span></div>
+    <div id="score" class="icon-text"><i class="fas fa-star"></i> <span></span></div>
+    <div id="highScore" class="icon-text"><i class="fas fa-trophy"></i> <span></span></div>
+    <div id="hint" class="hint glassmorphism"><i class="fas fa-lightbulb"></i> <span></span></div>
+  </div>
+  <audio id="congratsSound" src="congrats.mp3"></audio>
+  <script src="popup.js"></script>
+</body>
+</html>
